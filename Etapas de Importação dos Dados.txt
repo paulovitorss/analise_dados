@@ -1,0 +1,9 @@
+1° - Copia do banco para o container do mongoDB
+2º - Entra no container do mongoDB
+3° - Executa o comando de importar o banco
+4° - Depois entra na ferramenta de agregação do mongoDB Compass e executa o filtroInicial
+5° - Depois executa o removerDocComMenos100Posts
+6° - Depois executa o addCampoPrimeiraDataUltimaData
+7° - Depois executa o postsComRespostasInfos e o likesComRespostasInfos
+8° - Depois executa o removendoPostsSemData
+9° - Depois executa o removePostsComDataInferior26092006
