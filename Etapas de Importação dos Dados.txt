@@ -6,4 +6,4 @@
 6° - Depois executa o addCampoPrimeiraDataUltimaData
 7° - Depois executa o postsComRespostasInfos e o likesComRespostasInfos
 8° - Depois executa o removendoPostsSemData
-9° - Depois executa o removePostsComDataInferior26092006
+9° - Depois executa o removePostsComDataInferior26092006 -2009-12-01
