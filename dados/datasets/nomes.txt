@@ -11998,7 +11998,6 @@ brandy
 bras
 braselina
 braselino
-brasil
 brasila
 brasileia
 brasileiro
@@ -17803,7 +17802,6 @@ cristiomar
 cristione
 cristivan
 cristivane
-cristo
 cristobal
 cristodio
 cristof
@@ -21362,7 +21360,6 @@ deurismar
 deurival
 deurivaldo
 deurivan
-deus
 deusa
 deusadete
 deusair
@@ -51624,7 +51621,6 @@ jeosafa
 jeosiane
 jeosimar
 jeosmar
-jeova
 jeovaci
 jeovah
 jeovair
@@ -52190,7 +52186,6 @@ jesum
 jesumar
 jesumira
 jesun
-jesus
 jesusa
 jesuslene
 jesusmar
@@ -68161,7 +68156,6 @@ mannoel
 mannuel
 mannuela
 mannuella
-mano
 manoa
 manoal
 manoel
@@ -71665,7 +71659,6 @@ messala
 messia
 messiana
 messiane
-messias
 messina
 messody
 metilde
@@ -88037,7 +88030,6 @@ santinone
 santinor
 santir
 santissima
-santo
 santolina
 santolino
 santonino
@@ -98059,7 +98051,6 @@ victorya
 victtor
 victtoria
 vicyor
-vida
 vidal
 vidalia
 vidalina
