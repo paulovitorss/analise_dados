@@ -6534,7 +6534,6 @@ amon
 amona
 amonio
 amonita
-amor
 amora
 amoresio
 amori
@@ -80112,7 +80111,6 @@ pai
 paila
 pailo
 paiol
-paixao
 pal
 pala
 paladino
