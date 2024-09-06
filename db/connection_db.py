@@ -36,6 +36,8 @@ class MongoDBConnection:
         """
         try:
             self.client = pymongo.MongoClient(self.uri)
+            # Tenta acessar a lista de coleções para validar a conexão
+            self.client.admin.command('ping')
             self.db = self.client[self.database_name]
             self.collection = self.db[self.collection_name]
             print("Conexão estabelecida com sucesso ao banco de dados.")
@@ -46,7 +48,12 @@ class MongoDBConnection:
         """
         Retorna a coleção selecionada.
 
+        Raises:
+            Exception: Se a conexão com o banco de dados não foi estabelecida.
+
         Returns:
             pymongo.collection.Collection: A coleção do banco de dados.
         """
+        if not self.collection:
+            raise Exception("A conexão com o banco de dados não foi estabelecida ou a coleção não está disponível.")
         return self.collection
