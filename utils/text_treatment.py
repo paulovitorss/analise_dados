@@ -47,6 +47,14 @@ class TextTreatment:
         except FileNotFoundError:
             print("Arquivo de stopwords customizadas não encontrado.")
 
+        # Adicionar nomes
+        try:
+            with open('dados/datasets/nomes.txt', 'r', encoding='utf-8') as words:
+                nomes_stopwords = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
+            portuguese_ingles_stopwords.extend(nomes_stopwords)
+        except FileNotFoundError:
+            print("Arquivo de nomes não encontrado.")
+
         # Remover duplicatas e ordenar a lista
         portuguese_ingles_stopwords = list(set(portuguese_ingles_stopwords))
         portuguese_ingles_stopwords.sort()
