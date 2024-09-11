@@ -44,6 +44,7 @@ class TextTreatment:
         try:
             with open('dados/datasets/stopwords-pt.txt', 'r', encoding='utf-8') as words:
                 custom_stopwords = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
+            portuguese_ingles_stopwords.extend(custom_stopwords)
         except FileNotFoundError:
             print("Arquivo de stopwords customizadas não encontrado.")
 
