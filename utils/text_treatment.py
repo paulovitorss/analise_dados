@@ -1,23 +1,31 @@
+from dbm import error
+
 import nltk
 from nltk.corpus import wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
-nltk.download('omw-1.4', quiet=True)
-nltk.download('averaged_perceptron_tagger', quiet=True)
-nltk.download('punkt', quiet=True)
 import re
 import string
 import unidecode
-from wordcloud import STOPWORDS  # Ajuste aqui
+from wordcloud import STOPWORDS
+import spacy
 from spacy.lang.pt.stop_words import STOP_WORDS
+import stanza
+import pandas as pd
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 
 class TextTreatment:
-    def __init__(self, text):
-        self.text = text
+    def __init__(self):
+        """Constructor
+        """
+        nltk.download('stopwords', quiet=True)
+        nltk.download('wordnet', quiet=True)
+        nltk.download('omw-1.4', quiet=True)
+        nltk.download('averaged_perceptron_tagger', quiet=True)
+        nltk.download('punkt', quiet=True)
+        stanza.download('pt')
 
     @staticmethod
     def get_stopwords() -> list:
@@ -48,6 +56,13 @@ class TextTreatment:
         except FileNotFoundError:
             print("Arquivo de stopwords customizadas não encontrado.")
 
+        try:
+            with open('dados/datasets/girias.txt', 'r', encoding='utf-8') as words:
+                girias = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
+            portuguese_ingles_stopwords.extend(girias)
+        except FileNotFoundError:
+            print("Arquivo de girias não encontrado.")
+
         # Adicionar nomes
         try:
             with open('dados/datasets/nomes.txt', 'r', encoding='utf-8') as words:
@@ -63,8 +78,8 @@ class TextTreatment:
         return portuguese_ingles_stopwords
 
     @staticmethod
-    def remocao_stopword(string, lista_stopwords) -> str:
-        return ' '.join([i for i in string.split() if i not in lista_stopwords])
+    def remocao_stopword(palavra, lista_stopwords) -> str:
+        return ' '.join([i for i in palavra.split() if i not in lista_stopwords])
 
     @staticmethod
     def remove_caracteres(text) -> str:
@@ -153,15 +168,63 @@ class TextTreatment:
             return wordnet.NOUN
 
     @staticmethod
-    def lematizacao(string) -> str:
-        token = word_tokenize(string)
-        word_pos_tags = nltk.pos_tag(token)
-        wl = WordNetLemmatizer()
-        return " ".join([wl.lemmatize(tag[0], TextTreatment.obter_pos_tag(tag[1])) for tag in word_pos_tags])
+    def lematizacao(palavra, op_lemmatizer=None) -> str:
+        if op_lemmatizer is None:
+            print("Usando o lemmatizer do spaCy")
+            nlp = spacy.load("pt_core_news_sm")
+            doc = nlp(palavra)
+            return " ".join([token.lemma_ for token in doc])
 
-    def preprocessamento_texto(self) -> str:
-        lista_stopwords = self.get_stopwords()
-        texto_limpo = self.remove_caracteres(self.text)
-        texto_limpo = self.remocao_stopword(texto_limpo, lista_stopwords)
-        texto_limpo = self.lematizacao(texto_limpo)
+        elif op_lemmatizer == 1:
+            print("Usando o lemmatizer do NLTK")
+            lemmatizer = WordNetLemmatizer()
+            token = word_tokenize(palavra)
+            word_pos_tags = nltk.pos_tag(token)
+            return " ".join(
+                [lemmatizer.lemmatize(tag[0], TextTreatment.obter_pos_tag(tag[1])) for tag in word_pos_tags])
+
+        elif op_lemmatizer == 2:
+            print("Usando o lemmatizer do Stanza")
+            stanza.download('pt')  # Baixar o modelo se necessário
+            nlp = stanza.Pipeline('pt')
+            doc = nlp(palavra)
+            return " ".join([word.lemma for sent in doc.sentences for word in sent.words])
+
+        else:
+            print("Erro: Opção inválida para lematização.")
+            raise ValueError("Opção de lematização inválida")
+
+    @staticmethod
+    def preprocessamento_texto(texto_limpo) -> str:
+        lista_stopwords = TextTreatment.get_stopwords()
+        texto_limpo = TextTreatment.remove_caracteres(texto_limpo)
+        texto_limpo = TextTreatment.remocao_stopword(texto_limpo, lista_stopwords)
+        texto_limpo = TextTreatment.lematizacao(texto_limpo)
         return texto_limpo
+
+    @staticmethod
+    def finds_pandas_words(df_text):
+        try:
+            with open('dados/datasets/nomes_medicamentos_antidepressivos.txt', 'r', encoding='utf-8') as file:
+                text_lists = [row.strip() for row in file.readlines()]
+        except FileNotFoundError:
+            print("Arquivo de nomes não encontrado.")
+
+        return df_text.isin(text_lists)
+
+    @staticmethod
+    def finds_fuzzy_words(df_text):
+        texts_found = []
+        try:
+            with open('dados/datasets/nomes_medicamentos_antidepressivos.txt', 'r', encoding='utf-8') as file:
+                text_lists = [row.strip() for row in file.readlines()]
+        except FileNotFoundError:
+            print("Arquivo de nomes não encontrado.")
+
+        for word in text_lists:
+            results = process.extract(word, df_text, limit=2, scorer=fuzz.ratio)
+            for result, similarity in results:
+                if similarity >= 80:
+                    texts_found.append((word, result, similarity))
+
+        return texts_found
