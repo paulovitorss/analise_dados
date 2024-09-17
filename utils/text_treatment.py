@@ -1,5 +1,3 @@
-from dbm import error
-
 import nltk
 from nltk.corpus import wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
@@ -9,11 +7,15 @@ import string
 import unidecode
 from wordcloud import STOPWORDS
 import spacy
+from spacy.cli import download as spacy_download
+from spacy.util import is_package
 from spacy.lang.pt.stop_words import STOP_WORDS
 import stanza
-import pandas as pd
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+import pandas as pd
+import os
+import emoji
 
 
 class TextTreatment:
@@ -21,138 +23,122 @@ class TextTreatment:
         """Constructor
         """
         nltk.download('stopwords', quiet=True)
+        nltk.download('punkt', quiet=True)
         nltk.download('wordnet', quiet=True)
         nltk.download('omw-1.4', quiet=True)
         nltk.download('averaged_perceptron_tagger', quiet=True)
-        nltk.download('punkt', quiet=True)
-        stanza.download('pt')
+        if not os.path.exists(os.path.expanduser('~/stanza_resources/pt')):
+            stanza.download('pt', verbose=False)
+        if not is_package("pt_core_news_sm"):
+            spacy_download("pt_core_news_sm")
+
+        # Carregar modelos uma vez durante a inicialização
+        self.nlp_spacy = spacy.load("pt_core_news_sm")
+        self.nlp_stanza = stanza.Pipeline('pt', processors='tokenize,mwt,pos,lemma', use_gpu=False, verbose=False)
+        self.nlp_wl = WordNetLemmatizer()
+
+        # Carregar stopwords uma vez
+        self.lista_stopwords = self.get_stopwords()
 
     @staticmethod
     def get_stopwords() -> list:
-        portuguese_ingles_stopwords = []
+        stopwords_total = []
 
         # Stopwords em português
-        portugues = [unidecode.unidecode(palavra.lower().replace(" ", "")) for palavra in
+        portugues = [unidecode.unidecode(palavra.lower().strip()) for palavra in
                      nltk.corpus.stopwords.words('portuguese')]
-        portuguese_ingles_stopwords.extend(portugues)
+        stopwords_total.extend(portugues)
 
         # Stopwords em inglês
-        ingles = [unidecode.unidecode(palavra.lower().replace(" ", "")) for palavra in
+        ingles = [unidecode.unidecode(palavra.lower().strip()) for palavra in
                   nltk.corpus.stopwords.words('english')]
-        portuguese_ingles_stopwords.extend(ingles)
+        stopwords_total.extend(ingles)
 
         # Stopwords de diferentes fontes
-        stopwords_wordcloud = [unidecode.unidecode(palavra.lower().replace(" ", "")) for palavra in STOPWORDS]
-        portuguese_ingles_stopwords.extend(stopwords_wordcloud)
+        stopwords_wordcloud = [unidecode.unidecode(palavra.lower().strip()) for palavra in STOPWORDS]
+        stopwords_total.extend(stopwords_wordcloud)
 
-        stopwords_sklearn = [unidecode.unidecode(word.lower().replace(" ", "")) for word in STOP_WORDS]
-        portuguese_ingles_stopwords.extend(stopwords_sklearn)
+        stopwords_spacy = [unidecode.unidecode(word.lower().strip()) for word in STOP_WORDS]
+        stopwords_total.extend(stopwords_spacy)
 
-        # Adicionar stopwords do arquivo customizado
-        try:
-            with open('dados/datasets/stopwords-pt.txt', 'r', encoding='utf-8') as words:
-                custom_stopwords = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
-            portuguese_ingles_stopwords.extend(custom_stopwords)
-        except FileNotFoundError:
-            print("Arquivo de stopwords customizadas não encontrado.")
-
-        try:
-            with open('dados/datasets/girias.txt', 'r', encoding='utf-8') as words:
-                girias = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
-            portuguese_ingles_stopwords.extend(girias)
-        except FileNotFoundError:
-            print("Arquivo de girias não encontrado.")
-
-        # Adicionar nomes
-        try:
-            with open('dados/datasets/nomes.txt', 'r', encoding='utf-8') as words:
-                nomes_stopwords = [unidecode.unidecode(word.lower().strip()) for word in words if word.strip()]
-            portuguese_ingles_stopwords.extend(nomes_stopwords)
-        except FileNotFoundError:
-            print("Arquivo de nomes não encontrado.")
+        # Adicionar stopwords de arquivos customizados
+        base_path = 'dados/datasets/'
+        arquivos_stopwords = ['stopwords-pt.txt', 'girias.txt', 'nomes.txt']
+        for nome_arquivo in arquivos_stopwords:
+            caminho_arquivo = os.path.join(base_path, nome_arquivo)
+            if os.path.exists(caminho_arquivo):
+                with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+                    palavras_customizadas = [unidecode.unidecode(palavra.lower().strip()) for palavra in arquivo if
+                                             palavra.strip()]
+                stopwords_total.extend(palavras_customizadas)
+            else:
+                print(f"Arquivo '{nome_arquivo}' não encontrado.")
 
         # Remover duplicatas e ordenar a lista
-        portuguese_ingles_stopwords = list(set(portuguese_ingles_stopwords))
-        portuguese_ingles_stopwords.sort()
+        stopwords_total = list(set(stopwords_total))
+        stopwords_total.sort()
 
-        return portuguese_ingles_stopwords
-
-    @staticmethod
-    def remocao_stopword(palavra, lista_stopwords) -> str:
-        return ' '.join([i for i in palavra.split() if i not in lista_stopwords])
+        return stopwords_total
 
     @staticmethod
-    def remove_caracteres(text) -> str:
+    def remocao_stopword(texto, lista_stopwords) -> str:
+        return ' '.join([palavra for palavra in texto.split() if palavra not in lista_stopwords])
+
+    @staticmethod
+    def remove_caracteres(texto) -> str:
         # Converter para minúsculas e remover espaços em branco no início e fim
-        text = text.lower().strip()
+        texto = texto.lower().strip()
 
         # Remover tags HTML
-        text = re.sub(r'<.*?>', '', text)
+        texto = re.sub(r'<.*?>', '', texto)
 
         # Remover pontuação
-        text = re.sub(r'[%s]' % re.escape(string.punctuation), ' ', text)
+        texto = re.sub(r'[%s]' % re.escape(string.punctuation), ' ', texto)
 
         # Remover múltiplos espaços em branco
-        text = re.sub(r'\s+', ' ', text)
+        texto = re.sub(r'\s+', ' ', texto)
 
         # Remover referências numéricas em colchetes [123]
-        text = re.sub(r'\[[0-9]*]', ' ', text)
+        texto = re.sub(r'\[[0-9]*]', ' ', texto)
 
         # Remover caracteres que não são letras ou espaços
-        text = re.sub(r'[^\w\s]', '', text)
+        texto = re.sub(r'[^\w\s]', '', texto)
 
         # Remover números
-        text = re.sub(r'\d', ' ', text)
+        texto = re.sub(r'\d', ' ', texto)
 
         # Remover símbolo de dólar
-        text = re.sub(r"\$", "", text)
+        texto = re.sub(r"\$", "", texto)
 
         # Remover URLs
-        text = re.sub(r"https?://\S+|www\.\S+", '', text)
+        texto = re.sub(r"https?://\S+|www\.\S+", '', texto)
 
         # Remover hashtags
-        text = re.sub(r"#", "", text)
+        texto = re.sub(r"#", "", texto)
 
         # Remover trechos com "<a href"
-        text = re.sub(r'<a href.*?>', ' ', text)
+        texto = re.sub(r'<a href.*?>', ' ', texto)
 
         # Remover entidades HTML como &amp;
-        text = re.sub(r'&amp;', '', text)
+        texto = re.sub(r'&amp;', '', texto)
 
         # Remover caracteres especiais adicionais
-        text = re.sub(r'[_"\-;%()|+&=*.,!?:#$@\[\]/]', ' ', text)
+        texto = re.sub(r'[_"\-;%()|+&=*.,!?:#$@\[\]/]', ' ', texto)
 
         # Remover quebras de linha no formato HTML
-        text = re.sub(r'<br />', ' ', text)
+        texto = re.sub(r'<br />', ' ', texto)
 
         # Remover caracteres que não são letras (em português)
-        text = re.sub(r'[^a-zà-ù ]', ' ', text)
+        texto = re.sub(r'[^a-zà-ù ]', ' ', texto)
 
         # Remover repetições de 'k' ou 'j' (ex.: "kkkk", "jjjj")
-        text = re.sub(r'k{2,}', '', text, flags=re.IGNORECASE)
-        text = re.sub(r'j{2,}', '', text, flags=re.IGNORECASE)
+        texto = re.sub(r'k{2,}', '', texto, flags=re.IGNORECASE)
+        texto = re.sub(r'j{2,}', '', texto, flags=re.IGNORECASE)
 
-        # Remover emojis e caracteres unicode especiais
-        text = re.sub(r"["
-                      u"\U0001F600-\U0001F64F"  # emoticons
-                      u"\U0001F300-\U0001F5FF"  # symbols & pictographs
-                      u"\U0001F680-\U0001F6FF"  # transport & map symbols
-                      u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
-                      u"\U00002500-\U00002BEF"  # chinese characters
-                      u"\U00002702-\U000027B0"
-                      u"\U0001f926-\U0001f937"
-                      u"\U00010000-\U0010ffff"
-                      u"\u2640-\u2642"
-                      u"\u2600-\u2B55"
-                      u"\u200d"
-                      u"\u23cf"
-                      u"\u23e9"
-                      u"\u231a"
-                      u"\ufe0f"  # dingbats
-                      u"\u3030"
-                      "]+", '', text)
+        # Remover emojis
+        texto = emoji.replace_emoji(texto, replace='')
 
-        return text
+        return texto
 
     @staticmethod
     def obter_pos_tag(token) -> str:
@@ -167,62 +153,62 @@ class TextTreatment:
         else:
             return wordnet.NOUN
 
-    @staticmethod
-    def lematizacao(palavra, op_lemmatizer=None) -> str:
+    def lematizacao(self, texto, op_lemmatizer=None) -> str:
         if op_lemmatizer is None:
-            print("Usando o lemmatizer do spaCy")
-            nlp = spacy.load("pt_core_news_sm")
-            doc = nlp(palavra)
+            # Usar Spacy para lematização por padrão
+            doc = self.nlp_spacy(texto)
             return " ".join([token.lemma_ for token in doc])
 
         elif op_lemmatizer == 1:
-            print("Usando o lemmatizer do NLTK")
-            lemmatizer = WordNetLemmatizer()
-            token = word_tokenize(palavra)
+            token = word_tokenize(texto)
             word_pos_tags = nltk.pos_tag(token)
             return " ".join(
-                [lemmatizer.lemmatize(tag[0], TextTreatment.obter_pos_tag(tag[1])) for tag in word_pos_tags])
+                [self.nlp_wl.lemmatize(tag[0], TextTreatment.obter_pos_tag(tag[1])) for tag in word_pos_tags])
 
         elif op_lemmatizer == 2:
-            print("Usando o lemmatizer do Stanza")
-            stanza.download('pt')  # Baixar o modelo se necessário
-            nlp = stanza.Pipeline('pt')
-            doc = nlp(palavra)
+            # Usar Stanza para lematização
+            doc = self.nlp_stanza(texto)
             return " ".join([word.lemma for sent in doc.sentences for word in sent.words])
 
         else:
             print("Erro: Opção inválida para lematização.")
             raise ValueError("Opção de lematização inválida")
 
-    @staticmethod
-    def preprocessamento_texto(texto_limpo) -> str:
-        lista_stopwords = TextTreatment.get_stopwords()
-        texto_limpo = TextTreatment.remove_caracteres(texto_limpo)
-        texto_limpo = TextTreatment.remocao_stopword(texto_limpo, lista_stopwords)
-        texto_limpo = TextTreatment.lematizacao(texto_limpo)
-        return texto_limpo
+    def preprocessamento_texto(self, texto, op_lemmatizer=None) -> str:
+        texto = TextTreatment.remove_caracteres(texto)
+        texto = TextTreatment.remocao_stopword(texto, self.lista_stopwords)
+        texto = self.lematizacao(texto, op_lemmatizer)
+        return texto
 
     @staticmethod
-    def finds_pandas_words(df_text):
-        try:
-            with open('dados/datasets/nomes_medicamentos_antidepressivos.txt', 'r', encoding='utf-8') as file:
-                text_lists = [row.strip() for row in file.readlines()]
-        except FileNotFoundError:
-            print("Arquivo de nomes não encontrado.")
+    def finds_pandas_words(df_text, file_path: str):
+        if not os.path.exists(file_path):
+            print(f"Arquivo '{file_path}' não encontrado.")
+            return pd.Series([False] * len(df_text))
 
-        return df_text.isin(text_lists)
+        with open(file_path, 'r', encoding='utf-8') as file:
+            text_lists = [unidecode.unidecode(row.strip().lower()) for row in file.readlines()]
+
+        # Comparar os textos do DataFrame normalizados com as palavras do arquivo
+        df_text_normalizado = df_text.apply(lambda x: unidecode.unidecode(x.lower().strip()))
+
+        # Verificar se os textos do DataFrame estão no arquivo
+        return df_text_normalizado.isin(text_lists)
 
     @staticmethod
-    def finds_fuzzy_words(df_text):
+    def finds_fuzzy_words(df_text, file_path: str):
         texts_found = []
-        try:
-            with open('dados/datasets/nomes_medicamentos_antidepressivos.txt', 'r', encoding='utf-8') as file:
-                text_lists = [row.strip() for row in file.readlines()]
-        except FileNotFoundError:
-            print("Arquivo de nomes não encontrado.")
+        if not os.path.exists(file_path):
+            print(f"Arquivo '{file_path}' não encontrado.")
+            return []
 
+        with open(file_path, 'r', encoding='utf-8') as file:
+            text_lists = [row.strip() for row in file.readlines()]
+
+        df_text_list = df_text.tolist()
         for word in text_lists:
-            results = process.extract(word, df_text, limit=2, scorer=fuzz.ratio)
+            # Realiza a busca fuzzy para encontrar palavras semelhantes no DataFrame
+            results = process.extract(word, df_text_list, limit=2, scorer=fuzz.ratio)
             for result, similarity in results:
                 if similarity >= 80:
                     texts_found.append((word, result, similarity))
