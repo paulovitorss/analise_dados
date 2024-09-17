@@ -192,8 +192,13 @@ class TextTreatment:
         # Comparar os textos do DataFrame normalizados com as palavras do arquivo
         df_text_normalizado = df_text.apply(lambda x: unidecode.unidecode(x.lower().strip()))
 
-        # Verificar se os textos do DataFrame estão no arquivo
-        return df_text_normalizado.isin(text_lists)
+        # Identificar quais palavras foram encontradas
+        palavras_encontradas = df_text_normalizado.apply(
+            lambda x: ', '.join([palavra for palavra in text_lists if palavra in x]) if any(
+                palavra in x for palavra in text_lists) else ''
+        )
+
+        return palavras_encontradas
 
     @staticmethod
     def finds_fuzzy_words(df_text, file_path: str):
@@ -210,7 +215,7 @@ class TextTreatment:
             # Realiza a busca fuzzy para encontrar palavras semelhantes no DataFrame
             results = process.extract(word, df_text_list, limit=2, scorer=fuzz.ratio)
             for result, similarity in results:
-                if similarity >= 80:
+                if similarity >= 85:
                     texts_found.append((word, result, similarity))
 
         return texts_found
