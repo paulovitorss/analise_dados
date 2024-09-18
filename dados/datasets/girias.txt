@@ -946,3 +946,4 @@ historias
 aniversario
 aniversarios
 oxente
+só

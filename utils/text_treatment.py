@@ -82,7 +82,8 @@ class TextTreatment:
 
     @staticmethod
     def remocao_stopword(texto, lista_stopwords) -> str:
-        return ' '.join([palavra for palavra in texto.split() if palavra not in lista_stopwords])
+        return ' '.join([palavra for palavra in texto.split() if
+                         unidecode.unidecode(palavra.lower().strip()) not in lista_stopwords])
 
     @staticmethod
     def remove_caracteres(texto) -> str:
@@ -134,6 +135,7 @@ class TextTreatment:
         # Remover repetições de 'k' ou 'j' (ex.: "kkkk", "jjjj")
         texto = re.sub(r'k{2,}', '', texto, flags=re.IGNORECASE)
         texto = re.sub(r'j{2,}', '', texto, flags=re.IGNORECASE)
+        texto = re.sub(r'ks{2,}', '', texto, flags=re.IGNORECASE)
 
         # Remover emojis
         texto = emoji.replace_emoji(texto, replace='')
@@ -176,6 +178,7 @@ class TextTreatment:
 
     def preprocessamento_texto(self, texto, op_lemmatizer=None) -> str:
         texto = TextTreatment.remove_caracteres(texto)
+        texto = unidecode.unidecode(texto)
         texto = TextTreatment.remocao_stopword(texto, self.lista_stopwords)
         texto = self.lematizacao(texto, op_lemmatizer)
         return texto
