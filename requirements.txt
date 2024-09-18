@@ -12,3 +12,6 @@ emoji
 scikit-learn
 pymongo
 numpy
+prophet
+setuptools
+wheel
