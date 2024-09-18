@@ -112,7 +112,7 @@ class TextTreatment:
         texto = re.sub(r"\$", "", texto)
 
         # Remover URLs
-        texto = re.sub(r"https?://\S+|www\.\S+", '', texto)
+        texto = re.sub(r"https?://\S+", '', texto)
 
         # Remover hashtags
         texto = re.sub(r"#", "", texto)
@@ -136,6 +136,7 @@ class TextTreatment:
         texto = re.sub(r'k{2,}', '', texto, flags=re.IGNORECASE)
         texto = re.sub(r'j{2,}', '', texto, flags=re.IGNORECASE)
         texto = re.sub(r'(ks){2,}', '', texto, flags=re.IGNORECASE)
+        texto = re.sub(r'(ha){2,}', '', texto, flags=re.IGNORECASE)
         texto = re.sub(r'a{2,}', '', texto, flags=re.IGNORECASE)
 
         # Remover emojis
