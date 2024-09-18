@@ -11,9 +11,6 @@ from spacy.cli import download as spacy_download
 from spacy.util import is_package
 from spacy.lang.pt.stop_words import STOP_WORDS
 import stanza
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
-import pandas as pd
 import os
 import emoji
 
@@ -70,6 +67,9 @@ class TextTreatment:
                 with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
                     palavras_customizadas = [unidecode.unidecode(palavra.lower().strip()) for palavra in arquivo if
                                              palavra.strip()]
+
+                    palavras_customizadas = [re.sub(r'[^\w\s]', '', palavra) for palavra in palavras_customizadas]
+                    palavras_customizadas = [re.sub(r'\s+', ' ', palavra).strip() for palavra in palavras_customizadas]
                 stopwords_total.extend(palavras_customizadas)
             else:
                 print(f"Arquivo '{nome_arquivo}' não encontrado.")
@@ -179,43 +179,3 @@ class TextTreatment:
         texto = TextTreatment.remocao_stopword(texto, self.lista_stopwords)
         texto = self.lematizacao(texto, op_lemmatizer)
         return texto
-
-    @staticmethod
-    def finds_pandas_words(df_text, file_path: str):
-        if not os.path.exists(file_path):
-            print(f"Arquivo '{file_path}' não encontrado.")
-            return pd.Series([False] * len(df_text))
-
-        with open(file_path, 'r', encoding='utf-8') as file:
-            text_lists = [unidecode.unidecode(row.strip().lower()) for row in file.readlines()]
-
-        # Comparar os textos do DataFrame normalizados com as palavras do arquivo
-        df_text_normalizado = df_text.apply(lambda x: unidecode.unidecode(x.lower().strip()))
-
-        # Identificar quais palavras foram encontradas
-        palavras_encontradas = df_text_normalizado.apply(
-            lambda x: ', '.join([palavra for palavra in text_lists if palavra in x]) if any(
-                palavra in x for palavra in text_lists) else ''
-        )
-
-        return palavras_encontradas
-
-    @staticmethod
-    def finds_fuzzy_words(df_text, file_path: str):
-        texts_found = []
-        if not os.path.exists(file_path):
-            print(f"Arquivo '{file_path}' não encontrado.")
-            return []
-
-        with open(file_path, 'r', encoding='utf-8') as file:
-            text_lists = [row.strip() for row in file.readlines()]
-
-        df_text_list = df_text.tolist()
-        for word in text_lists:
-            # Realiza a busca fuzzy para encontrar palavras semelhantes no DataFrame
-            results = process.extract(word, df_text_list, limit=2, scorer=fuzz.ratio)
-            for result, similarity in results:
-                if similarity >= 85:
-                    texts_found.append((word, result, similarity))
-
-        return texts_found

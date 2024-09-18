@@ -446,11 +446,7 @@ class CollectionFilters:
         # Executando a agregação
         resultado = list(self.collection.aggregate(pipeline))
 
-        # Obtendo e printando o resultado
-        if resultado:
-            print(f"Quantidade de Usuários: {resultado[0]['numero_de_usuarios_unicos']}")
-        else:
-            print("Nenhum usuário encontrado.")
+        return resultado[0]['numero_de_usuarios_unicos'] if resultado else 0
 
     def count_users_by_gender(self, field: str, operator: str, level: int | str, gender: str):
 
@@ -476,8 +472,4 @@ class CollectionFilters:
         # Executando a agregação
         resultado = list(self.collection.aggregate(pipeline))
 
-        # Imprimindo o resultado
-        if resultado:
-            print(f"Quantidade de usuários {gender}: {resultado[0][f'numero_de_usuarios_{gender.lower()}']}")
-        else:
-            print(f"Nenhum usuário")
+        return resultado[0][f'numero_de_usuarios_{gender.lower()}'] if resultado else 0

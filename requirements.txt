@@ -1,0 +1,14 @@
+pandas
+nltk
+fuzzywuzzy
+unidecode
+python-dateutil
+tqdm
+matplotlib
+wordcloud
+spacy
+stanza
+emoji
+scikit-learn
+pymongo
+numpy
