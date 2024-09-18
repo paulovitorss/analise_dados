@@ -135,7 +135,8 @@ class TextTreatment:
         # Remover repetições de 'k' ou 'j' (ex.: "kkkk", "jjjj")
         texto = re.sub(r'k{2,}', '', texto, flags=re.IGNORECASE)
         texto = re.sub(r'j{2,}', '', texto, flags=re.IGNORECASE)
-        texto = re.sub(r'ks{2,}', '', texto, flags=re.IGNORECASE)
+        texto = re.sub(r'(ks){2,}', '', texto, flags=re.IGNORECASE)
+        texto = re.sub(r'a{2,}', '', texto, flags=re.IGNORECASE)
 
         # Remover emojis
         texto = emoji.replace_emoji(texto, replace='')
