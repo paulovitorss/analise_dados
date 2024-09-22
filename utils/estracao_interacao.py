@@ -8,14 +8,17 @@ class ExtracaoInteracao:
             'quantProfile': re.compile(r'updated (?:his|her) profile picture', re.IGNORECASE),
             'quantCover': re.compile(r'updated (?:his|her) cover photo', re.IGNORECASE),
             'quantAddPhotoWithOthers': re.compile(
-                r'added (?:a new photo|new photos)(?: to the album:)?(?: —)? with .+(?: and .+)*(?: and \d+ others)?',
-                re.IGNORECASE),
-            'quantAddPhotoWith': re.compile(
-                r'added (?:a new photo|new photos)(?: to the album:)?(?: —)? with',
-                re.IGNORECASE),
+                r'(?:added|posted) (?:a new photo|\d+ new photos|\d+ photos|new photos)(?: —)? with [\w\s]+(?: and [\w\s]+)*(?: and \d+ others)?(?: at [\w\s(),]+)?',
+                re.IGNORECASE
+            ),
+            'quantIsWithOthers': re.compile(
+                r'(?:is|was) with [\w\s]+(?: and [\w\s]+)*(?: and \d+ others)?(?: at [\w\s]+)?\.',
+                re.IGNORECASE
+            ),
             'quantAddPhoto': re.compile(
-                r'(added (?:a new photo|new photos)|photo to the album:)',
-                re.IGNORECASE),
+                r'(added (?:a new photo|new photos| \d+ photos))',
+                re.IGNORECASE
+            ),
             'quantSharedPhoto': re.compile(r'shared (?:.+\'s )?photo', re.IGNORECASE),
             'quantSharedVideo': re.compile(r'shared (?:.+\'s )?video', re.IGNORECASE),
             'quantSharedLink': re.compile(r'shared a link', re.IGNORECASE),

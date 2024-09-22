@@ -27,7 +27,7 @@ class BuscaPalavras:
         return palavras_encontradas
 
     @staticmethod
-    def fuzzy_string_matching(df_texto, file_path: str, similarity_threshold: int = 85):
+    def fuzzy_string_matching(df_texto, file_path: str, similarity_threshold: int = 95):
         texts_found = []
         if not os.path.exists(file_path):
             print(f"Arquivo '{file_path}' não encontrado.")

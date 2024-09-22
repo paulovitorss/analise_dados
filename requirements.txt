@@ -15,3 +15,5 @@ numpy
 prophet
 setuptools
 wheel
+seaborn
+scipy
