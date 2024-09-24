@@ -277,7 +277,7 @@ class CollectionFilters:
                     'quantAmigos': '$friends.summary.total_count',
                     'postMessage': '$posts.message',
                     'postStory': '$posts.story',
-                    'postCreated_time': '$posts.created_time',
+                    'postCreatedTime': '$posts.created_time',
                     'diaDaSemana': {
                         '$switch': {
                             'branches': [
@@ -400,7 +400,7 @@ class CollectionFilters:
         pipeline5 = [
             {
                 '$match': {
-                    'postCreated_time': {
+                    'postCreatedTime': {
                         '$gte': data_fim,
                         '$lt': data_inicio
                     }
