@@ -1,5 +1,5 @@
 import pymongo
-
+from pymongo.collection import Collection
 
 class MongoDBConnection:
     """
@@ -44,16 +44,7 @@ class MongoDBConnection:
         except Exception as e:
             print('Erro ao conectar com o banco de dados. Erro: {}'.format(e))
 
-    def get_collection(self) -> pymongo.collection.Collection:
-        """
-        Retorna a coleção selecionada.
-
-        Raises:
-            Exception: Se a conexão com o banco de dados não foi estabelecida.
-
-        Returns:
-            pymongo.collection.Collection: A coleção do banco de dados.
-        """
+    def get_collection(self) -> Collection:
         if not self.collection:
             raise Exception("A conexão com o banco de dados não foi estabelecida ou a coleção não está disponível.")
         return self.collection
