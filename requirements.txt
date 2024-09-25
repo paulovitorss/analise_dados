@@ -18,6 +18,5 @@ wheel
 seaborn
 scipy
 statsmodels
-jupyter
 ipywidgets
 pymannkendall

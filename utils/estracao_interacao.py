@@ -36,5 +36,5 @@ class ExtracaoInteracao:
 
     def extract_interactions(self):
         for key, pattern in self.patterns.items():
-            self.df.loc[:, key] = self.df['postStory'].apply(lambda x: self.count_occurrences(x, pattern))
+            self.df[key] = self.df['postStory'].apply(lambda x: self.count_occurrences(x, pattern))
         return self.df
