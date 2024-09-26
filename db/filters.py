@@ -414,6 +414,24 @@ class CollectionFilters:
         # Verifica se a nova coleção será criada ou já existe
         self.check_or_create_collection(pipeline5, collection_name_out)
 
+    def apply_pipeline6(self, collection_name_out: str):
+        pipeline6 = [
+            {
+                '$unwind': '$likes'
+            }, {
+                '$project': {
+                    '_id': '$likes._id',
+                    'id_usuario': 1,
+                    'nome': '$likes.name',
+                    'likeCreatedTime': '$likes.created_time',
+                },
+            },
+            {
+                '$out': collection_name_out
+            }
+        ]
+        self.check_or_create_collection(pipeline6, collection_name_out)
+
     def quant_users_cat(self, field: str, operator: str, level: int | str):
         """
         Aplica o pipeline que faz o match com um campo, operador e nível fornecidos e
