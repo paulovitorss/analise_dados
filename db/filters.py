@@ -422,8 +422,7 @@ class CollectionFilters:
                 '$project': {
                     '_id': '$likes._id',
                     'id_usuario': 1,
-                    'nome': '$likes.name',
-                    'likeCreatedTime': '$likes.created_time',
+                    'likeCreatedTime': '$likes.created_time'
                 },
             },
             {
