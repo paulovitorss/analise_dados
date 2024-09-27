@@ -129,46 +129,6 @@ class CollectionFilters:
                     'idade': 1,
                     'sexo': 1,
                     'id_usuario': 1,
-                    'nivel': {
-                        '$let': {
-                            'vars': {
-                                'dividedValue': {
-                                    '$divide': [
-                                        {
-                                            '$arrayElemAt': [
-                                                '$respostas.nivel', 0
-                                            ]
-                                        }, 21
-                                    ]
-                                }
-                            },
-                            'in': {
-                                '$cond': {
-                                    'if': {
-                                        '$gte': [
-                                            {
-                                                '$subtract': [
-                                                    '$$dividedValue', {
-                                                        '$trunc': '$$dividedValue'
-                                                    }
-                                                ]
-                                            }, 0.5
-                                        ]
-                                    },
-                                    'then': {
-                                        '$add': [
-                                            {
-                                                '$trunc': '$$dividedValue'
-                                            }, 1
-                                        ]
-                                    },
-                                    'else': {
-                                        '$trunc': '$$dividedValue'
-                                    }
-                                }
-                            }
-                        }
-                    },
                     'pessimismo': {
                         '$arrayElemAt': [
                             '$respostas.pessimismo', 0
@@ -348,21 +308,6 @@ class CollectionFilters:
                             ],
                             'default': 'Desconhecido'
                         }
-                    },
-                    'hora': {
-                        '$hour': '$posts.created_time'
-                    },
-                    'minutos': {
-                        '$minute': '$posts.created_time'
-                    },
-                    'diaDoMes': {
-                        '$dayOfMonth': '$posts.created_time'
-                    },
-                    'mes': {
-                        '$month': '$posts.created_time'
-                    },
-                    'ano': {
-                        '$year': '$posts.created_time'
                     }
                 }
             },
