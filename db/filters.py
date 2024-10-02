@@ -8,26 +8,10 @@ logging.basicConfig(level=logging.INFO)
 
 class CollectionFilters:
     def __init__(self, collection: pymongo.collection.Collection):
-        """
-           Inicializa a conexão com a coleção já existente.
-
-           Args:
-               collection (pymongo.collection.Collection): A coleção do MongoDB.
-           """
         self.collection = collection
         self.collection_name_out = None
 
     def check_or_create_collection(self, pipeline, collection_name_out):
-        """
-        Verifica se a coleção de saída já existe. Se não existir, cria a coleção com base no pipeline.
-
-        Args:
-            pipeline (list): O pipeline do MongoDB a ser executado.
-            collection_name_out (str): O nome da coleção de saída.
-
-        Returns:
-            pymongo.collection.Collection: A nova coleção (ou existente) com os dados filtrados.
-        """
         self.collection_name_out = collection_name_out
         # Acessa o banco de dados diretamente a partir da coleção
         db = self.collection.database
@@ -58,11 +42,6 @@ class CollectionFilters:
             {
                 '$match': {
                     'autoriza': 'S'
-                }
-            },
-            {
-                '$match': {
-                    'public_profile.locale': 'pt_BR'
                 }
             },
             {
@@ -377,16 +356,6 @@ class CollectionFilters:
         self.check_or_create_collection(pipeline6, collection_name_out)
 
     def quant_users_cat(self, field: str, operator: str, level: int | str):
-        """
-        Aplica o pipeline que faz o match com um campo, operador e nível fornecidos e
-        conta o número de usuários únicos.
-
-        Args:
-            field (str): Campo a ser filtrado.
-            operator (str): Operador de comparação (por exemplo, '$gte', '$eq').
-            level (int | str): Valor para comparação.
-        """
-
         pipeline = [
             {
                 '$match': {
