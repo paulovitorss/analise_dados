@@ -306,16 +306,6 @@ class CollectionFilters:
         self.check_or_create_collection(pipeline4, collection_name_out)
 
     def apply_pipeline5(self, collection_name_out: str, data_inicio: datetime, data_fim: datetime):
-        """
-        Aplica um pipeline para filtrar documentos por um intervalo de datas e
-        salva o resultado em uma nova coleção.
-
-        Args:
-            collection_name_out (str): O nome da coleção de saída.
-            data_inicio (datetime): A data de início do intervalo (inclusiva).
-            data_fim (datetime): A data de fim do intervalo (exclusiva).
-        """
-
         pipeline5 = [
             {
                 '$match': {
