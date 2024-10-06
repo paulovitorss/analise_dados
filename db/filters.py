@@ -40,11 +40,6 @@ class CollectionFilters:
                 }
             },
             {
-                '$match': {
-                    'autoriza': 'S'
-                }
-            },
-            {
                 '$out': collection_name_out
             }
         ]

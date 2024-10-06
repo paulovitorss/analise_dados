@@ -5,90 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="refatorando">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/time_series_eda_7.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analise.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analise.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/10214421550670970.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1022864967872047.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1033110380164779.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1044942355647418.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1105432349559329.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1170510339747390.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1211223432346372.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1232495143519028.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1257481127685383.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1385319051580320.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1401426946632559.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1457411227699416.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1458695270914220.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1466776020086339.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1474155432682501.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1486146538167125.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1486348074805772.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1490358514390143.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1492157617538982.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1502169689831039.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1502378776518622.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1502634726523802.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1505262262895441.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1528261897239795.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1540802029367418.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1587210241335648.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1592776377455709.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1651450664917734.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1768327656531278.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1791295990903518.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1796067243760886.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/180167572569447.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1870214326566563.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1942377509357721.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1943778079216175.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1946002089051904.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1976561949250115.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1977069062531207.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/1977291202559840.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2000049206898919.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2004875956427590.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2012280462346031.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2023637511215863.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2041925969376769.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2069736153313031.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2094876800735382.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/2414528602105480.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/294456457741682.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/299741130514772.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/301840113661980.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/337226220074570.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/397238520731799.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/523889937966576.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/540079019690503.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/575912899414794.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/698817233653777.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/741112402763818.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/741580989385892.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/782831401895738.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/815098648696899.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/848813808619893.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/855386091334664.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/872507229580251.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/872858692876290.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/875705135940560.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/884794121682326.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/911841485656952.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/928018567367487.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/932900373523932.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/938224233002226.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/968408906650982.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/997096307098438.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/quant_posts_por_usuario/data_inicial_posts.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/resultados_bow_unigramas.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/resultados_tfidf.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/resultados_tfidf_unigramas.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/so_suicida.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dados/sem_filtros_datas/so_suicida_sem_filtro_data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resultados_mann_kendall.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/time_series_eda.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_series_eda_7.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/time_series_eda_7.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,14 +37,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/paulovss/Documentos/projects/python/analise_dados"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/paulovss/Documentos/projects/python/analise_dados&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
