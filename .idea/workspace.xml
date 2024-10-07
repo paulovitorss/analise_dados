@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando">
+    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Tentando clusterizar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_cluster0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_cluster0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_cluster2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_cluster2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_likes_cluster0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_likes_cluster0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_likes_cluster2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_likes_cluster2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_posts_interacoes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_posts_interacoes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultados_mk_original_cluster0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/resultados_mk_original_cluster0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resultados_mk_original_cluster2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/resultados_mk_original_cluster2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +67,23 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refatorando" />
     <MESSAGE value="Removendo filtro desnecessario" />
     <MESSAGE value="Refatorando funções de plotar grafico" />
     <MESSAGE value="Testando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testando" />
+    <MESSAGE value="Tentando clusterizar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tentando clusterizar" />
   </component>
 </project>
