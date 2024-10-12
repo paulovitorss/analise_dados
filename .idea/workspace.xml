@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="refatorando">
+    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
     </list>
@@ -74,11 +74,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Removendo filtro desnecessario" />
     <MESSAGE value="Refatorando funções de plotar grafico" />
-    <MESSAGE value="Testando" />
     <MESSAGE value="Tentando clusterizar" />
     <MESSAGE value="removendo csv" />
     <MESSAGE value="Ajustando" />
     <MESSAGE value="refatorando" />
-    <option name="LAST_COMMIT_MESSAGE" value="refatorando" />
+    <MESSAGE value="Testando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testando" />
   </component>
 </project>
