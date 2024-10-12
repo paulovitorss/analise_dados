@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Ajustando">
+    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="refatorando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
     </list>
@@ -37,16 +37,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/paulovss/Documentos/projects/python/analise_dados&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/paulovss/Documentos/projects/python/UnBSense",
+    "settings.editor.selected.configurable": "database.data.views.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -72,13 +72,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refatorando" />
     <MESSAGE value="Removendo filtro desnecessario" />
     <MESSAGE value="Refatorando funções de plotar grafico" />
     <MESSAGE value="Testando" />
     <MESSAGE value="Tentando clusterizar" />
     <MESSAGE value="removendo csv" />
     <MESSAGE value="Ajustando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustando" />
+    <MESSAGE value="refatorando" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatorando" />
   </component>
 </project>
