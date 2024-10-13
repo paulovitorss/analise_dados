@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando possibilidades">
+    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando clusters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_agrupado_media.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/df_agrupado_soma.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/df_agrupado_soma.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_agrupado_soma.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/estracao_interacao.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/extracao_interacao.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +81,7 @@
     <MESSAGE value="refatorando" />
     <MESSAGE value="Testando" />
     <MESSAGE value="Testando possibilidades" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testando possibilidades" />
+    <MESSAGE value="Testando clusters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testando clusters" />
   </component>
 </project>
