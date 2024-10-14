@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando clusters">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/df_agrupado_soma.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_agrupado_soma.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
@@ -44,6 +45,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/paulovss/Documentos/projects/dbs/mongodb&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views.appearance&quot;
   }
@@ -56,7 +58,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-f1e2692396bc-1e58bffe31b7-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-242.21829.112" />
+        <option value="bundled-python-sdk-80a6976e5986-7ba1f540c4e9-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-242.22855.78" />
       </set>
     </attachedChunks>
   </component>
