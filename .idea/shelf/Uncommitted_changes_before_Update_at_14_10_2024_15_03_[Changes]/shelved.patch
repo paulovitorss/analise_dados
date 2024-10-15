@@ -1,0 +1,32 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"6252c4a9-844e-4c88-9940-c201449b4b8c\" name=\"Changes\" comment=\"Testando clusters\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/df_agrupado_soma.csv\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/df_agrupado_soma.csv\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/teste.ipynb\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/teste.ipynb\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;paulovitorss&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/paulovitorss/analise_dados.git&quot;,\n    &quot;accountId&quot;: &quot;92cbaaf2-d308-4208-bcea-dbaae84e3c70&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2mzBoVKnY3IdCgKGA1bd1jbba3W\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/paulovss/Documentos/projects/dbs/mongodb&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views.appearance&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-f1e2692396bc-1e58bffe31b7-com.jetbrains.pycharm.ds.sharedIndexes.bundled-DS-242.21829.112\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Removendo filtro desnecessario\" />\n    <MESSAGE value=\"Refatorando funções de plotar grafico\" />\n    <MESSAGE value=\"Tentando clusterizar\" />\n    <MESSAGE value=\"removendo csv\" />\n    <MESSAGE value=\"Ajustando\" />\n    <MESSAGE value=\"refatorando\" />\n    <MESSAGE value=\"Testando\" />\n    <MESSAGE value=\"Testando possibilidades\" />\n    <MESSAGE value=\"Testando clusters\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Testando clusters\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 53681a19940c5bb3135285df9c836c8cf4789dde)
++++ b/.idea/workspace.xml	(date 1728858287669)
+@@ -4,10 +4,8 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando clusters">
++    <list default="true" id="6252c4a9-844e-4c88-9940-c201449b4b8c" name="Changes" comment="Testando cluster pt2">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/df_agrupado_soma.csv" beforeDir="false" afterPath="$PROJECT_DIR$/df_agrupado_soma.csv" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/teste.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/teste.ipynb" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -82,6 +80,7 @@
+     <MESSAGE value="Testando" />
+     <MESSAGE value="Testando possibilidades" />
+     <MESSAGE value="Testando clusters" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Testando clusters" />
++    <MESSAGE value="Testando cluster pt2" />
++    <option name="LAST_COMMIT_MESSAGE" value="Testando cluster pt2" />
+   </component>
+ </project>
+\ No newline at end of file
