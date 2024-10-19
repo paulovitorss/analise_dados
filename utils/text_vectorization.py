@@ -13,7 +13,7 @@ class TextVectorization:
             df (pd.DataFrame): DataFrame contendo as mensagens e os usuários.
             stop_words (list): Lista de stopwords a serem utilizadas na vetorização.
         """
-        self.df = df
+        self.df = df.reset_index(drop=True)
         self.stop_words = stop_words
 
     def tfidf_vectorization(self, output_path, max_df_custom: int, min_df_custom: float | int,
