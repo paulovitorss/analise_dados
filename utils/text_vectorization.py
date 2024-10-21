@@ -112,7 +112,7 @@ class TextVectorization:
         return resultados_df_bow
 
     @staticmethod
-    def plot_top_words(df_resultados: pd.DataFrame, column: str, title: str):
+    def plot_top_words(df_resultados: pd.DataFrame, column: str, title: str = None):
         """
         Plota as top 10 palavras com base na coluna (score ou contagem) e exibe um gráfico de barras.
 
